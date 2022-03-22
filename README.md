@@ -1,5 +1,10 @@
 # todo-list
 
+## Process
+
+* Added new item with v-on:keyup:enter.
+* Implemented local storage to keep the data.
+
 ## Project setup
 ```
 npm install
