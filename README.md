@@ -5,6 +5,11 @@
 * Added new item with v-on:keyup:enter.
 * Implemented local storage to keep the data.
 
+* Marking the item by clicking on it.
+* Installed feather icons.
+* Delete the item by clicking on the trash icon.
+* Update LocalStorage.
+
 ## Project setup
 ```
 npm install
