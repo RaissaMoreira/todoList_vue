@@ -4,11 +4,12 @@
 
 * Added new item with v-on:keyup:enter.
 * Implemented local storage to keep the data.
-
 * Marking the item by clicking on it.
 * Installed feather icons.
 * Delete the item by clicking on the trash icon.
 * Update LocalStorage.
+* Created new component (ListItem).
+* Added a project image.
 
 ## Project setup
 ```
