@@ -8,7 +8,7 @@
 
 ![project preview](https://github.com/RaissaMoreira/vue-todoList/blob/master/src/assets/image.png?raw=true)
 
-## Process
+## :round_pushpin: Process
 
 * Added new item with v-on:keyup:enter.
 * Implemented local storage to keep the data.
