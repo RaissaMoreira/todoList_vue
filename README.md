@@ -1,8 +1,8 @@
-# :round_pushpin: Todo List :page_facing_up:
+# :page_facing_up: Todo List :page_facing_up:
 
 :round_pushpin: The Todo List was made during the FrontStart(@IsadoraStangarlin) course using the basic functionalities of Vue.js.
 
-:round_pushpin: Todo List built using **Vue.js** (classes, computed, props, :for, v-on and watch) and **local storage**.
+:round_pushpin: Built using **Vue.js** (classes, computed, props, :for, v-on and watch) and **local storage**.
 
 ## Preview :smile:
 
