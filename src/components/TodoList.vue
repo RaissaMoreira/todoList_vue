@@ -1,25 +1,33 @@
 <template>
   <div class="todo-list">
     <h3>Todo List</h3>
-    <input type="text" class="input-new-item" v-on:keyup.enter="addNewItemToList">
+    <input
+      type="text"
+      class="input-new-item"
+      v-on:keyup.enter="addNewItemToList"
+    />
 
     <ul>
-      <li v-for="(item, index) in list" :key="index">
-        <span class="list-item">
-          <input type="checkbox" :id="index" class="item-checkbox" v-model="item.checked">
-          <label :for="index" :class="getItemClass(item.checked)">{{ item.label }}</label>
-        </span>
-        <span v-html="deleteIcon" @click="deleteItem(index)"></span>
-      </li>
+      <ListItem
+        v-for="(item, index) in list"
+        :key="index"
+        :item="item"
+        :index="index"
+        @delete-item="deleteItem"
+      />
     </ul>
   </div>
 </template>
 
 <script>
-import feather from 'feather-icons';
+import ListItem from './ListItem'
 
 export default {
   name: 'TodoList',
+
+  components: {
+    ListItem
+  },
 
   data() {
     return {
@@ -29,46 +37,40 @@ export default {
 
   created() {
     // converte JSON p/ objeto
-    // fazer a lista receber o que tem no localStorage
-    const itensInLocalStorage = JSON.parse(localStorage.getItem('list'));
-    this.list = itensInLocalStorage ? itensInLocalStorage : [];
-  },
-
-  computed: {
-    deleteIcon () {
-      return feather.icons.trash.toSvg({'width': 18});
-    }
+    const itensInLocalStorage = JSON.parse(localStorage.getItem('list'))
+    //necessary check to see if it is the first time.
+    this.list = itensInLocalStorage ? itensInLocalStorage : []
   },
 
   methods: {
-    getItemClass(itemChecked) {
-      return itemChecked ? 'item-checked' : '';
-    },
-
     addNewItemToList(event) {
-      const newItem = event.target.value;
+      const newItem = event.target.value
 
       // unshift: adiciona item no início da lista
       this.list.unshift({
-        label: newItem, checked: false
+        label: newItem,
+        checked: false
       })
 
-      this.updateLocalStorage();
-
       // limpar o campo
-      event.target.value = '';
+      event.target.value = ''
     },
 
     deleteItem(index) {
-      this.list.splice(index, 1);
-      this.updateLocalStorage();
+      this.list.splice(index, 1)
     },
 
     updateLocalStorage() {
       // add in localStorage
-
       // tranformando objeto em JSON p/ salvar no localStorage
-      localStorage.setItem('list', JSON.stringify(this.list));
+      localStorage.setItem('list', JSON.stringify(this.list))
+    }
+  },
+
+  watch: {
+    // observar a list
+    list() {
+      this.updateLocalStorage()
     }
   }
 }
@@ -91,19 +93,5 @@ ul {
   width: 80%;
   margin: 20px auto;
   text-align: left;
-}
-
-li, .list-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.item-checkbox {
-  margin-right: 10px;
-}
-
-.item-checked {
-  text-decoration: line-through;
 }
 </style>
